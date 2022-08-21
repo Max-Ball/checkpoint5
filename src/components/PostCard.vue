@@ -16,7 +16,7 @@
       <div class="row">
         <div class="col-md-12 d-flex justify-content-start">
           <router-link :to="{ name: 'Profile', params: { profileId: post.creator.id } }">
-            <div>
+            <div v-if="post.creator.picture">
               <img class="profile-pic" :src="post.creator.picture" alt="profile image" height="60" width="60">
             </div>
           </router-link>
@@ -36,7 +36,9 @@
       <div class="my-2">
         {{ post.body }}
       </div>
-      <img class="img-fluid" :src="post.imgUrl" alt="post image">
+      <div v-if="post.imgUrl">
+        <img class="img-fluid" :src="post.imgUrl" alt="post image">
+      </div>
       <div v-if="post.likes == false" class="text-end p-1">
         <i class="mdi mdi-heart-outline f-18 selectable show-likes" @click="likePost(post.id)"></i>
         <h5>{{ post.likes.length }}</h5>

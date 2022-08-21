@@ -6,7 +6,7 @@
           <img class="profile-pic" :src="account.picture" alt="profile image" height="120" width="120">
         </div>
       </router-link>
-      <div class="border-bottom">
+      <div class="border-bottom border-dark">
         <h3 class="m-0">
           {{ account.name }}
         </h3>

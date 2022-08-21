@@ -7,11 +7,11 @@
         <div class="card-body">
           <div class="card-title">
             <img class="profile-pic" :src="profile.picture" alt="profile-picture" height="150" width="150">
-            <h2>
+            <h2 class="border-bottom border-dark">
               <p class="text-end" v-if="profile.graduated">
                 <i class="mdi mdi-account-school"></i>
               </p>{{ profile.name }} <br>
-              <h5 class="text-end">{{ profile.class }}</h5>
+              <h5>{{ profile.class }}</h5>
             </h2>
           </div>
           <p>{{ profile.bio }}</p>

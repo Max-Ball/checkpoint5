@@ -4,8 +4,8 @@
       <Login />
     </div>
     <div class="col-md-5">
-      <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-        <h1>CHECKPOINT 5</h1>
+      <router-link class="navbar-brand d-flex justify-content-center" :to="{ name: 'Home' }">
+        <h1><b>The NETWORK</b></h1>
       </router-link>
     </div>
     <div class="col-md-4">

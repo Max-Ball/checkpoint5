@@ -3,7 +3,7 @@
     <div class="card-body p-2">
       <img class="img-fluid" :src="ad.square" alt="">
       <h4>
-        Click <a class="selectable" :href="ad.linkUrl">here</a> to check out {{ ad.title }}!!
+        Click <a class="selectable" href="https://boisecodeworks.com">here</a> to check out {{ ad.title }}!!
         {{ ad.linkUrl }}
       </h4>
     </div>
