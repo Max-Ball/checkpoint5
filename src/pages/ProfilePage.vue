@@ -1,21 +1,39 @@
 <template>
-  <div class="profile-page">
-    <div class="cover-img">
-      <div>
-        <img :src="profile.picture" alt="" height="120">
-        <h3>{{ profile.name }}</h3>
-        <p v-if="profile.graduated">
-          <i class="mdi mdi-account-school"></i>
-        </p>
-        <h6> {{ profile.body }} </h6>
-        <p>{{ profile.bio }}</p>
-        <a href="">{{ profile.github }}</a>
-        <a href="">{{ profile.linkedin }}</a>
-        <h4>{{ profile.class }}</h4>
-        <h5>{{ profile.email }}</h5>
-        <h6>{{ profile.resume }}</h6>
+  <div class="profile-page row">
+    <div class="col-md-12 my-4">
+      <div class="card">
+        <div class="cover-img border rounded">
+        </div>
+        <div class="card-body">
+          <div class="card-title d-flex justify-content-between border-bottom">
+            <img class="profile-pic" :src="profile.picture" alt="profile-picture" height="150" width="150">
+
+            <h2>
+              <p class="text-end" v-if="profile.graduated">
+                <i class="mdi mdi-account-school"></i>
+              </p>{{ profile.name }} <br>
+              <h5 class="text-end">{{ profile.class }}</h5>
+            </h2>
+          </div>
+          <p>{{ profile.bio }}</p>
+          <div class="fs-5 d-flex justify-content-evenly">
+            <a class="text-dark" :href="profile.github" title="github">
+              <i class="mdi mdi-github f-28"></i>
+            </a>
+            <a class="text-dark" :href="profile.linkedin" title="linkedin">
+              <i class="mdi mdi-linkedin f-28"></i>
+            </a>
+            <a class="text-dark" :href="profile.resume" title="resume">
+              <i class="mdi mdi-newspaper-variant-outline f-28"></i>
+            </a>
+            <a class="text-dark" href="https://www.gmail.com" title="email">
+              <i class="mdi mdi-email f-28"></i>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
+
     <div class=container>
       <div class="row justify-content-center">
         <div class="col-10">
@@ -33,6 +51,7 @@
         </div>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -44,6 +63,7 @@ import { onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { AppState } from '../AppState';
 import PostCard from '../components/PostCard.vue';
+import { router } from '../router';
 import { postsService } from '../services/PostsService';
 import { profilesService } from '../services/ProfilesService';
 import { logger } from '../utils/Logger';
@@ -58,7 +78,8 @@ export default {
         await profilesService.getProfileById(route.params.profileId)
       } catch (error) {
         logger.error('[getting profile by id]', error)
-        Pop.error(error)
+        Pop.error('This profile does not exist')
+        router.push({ name: 'Home' })
       }
     }
 
@@ -104,11 +125,16 @@ export default {
 .cover-img {
   height: 300px;
   background-position: center;
-  background-attachment: fixed;
   background-size: cover;
   display: grid;
   place-content: center;
   color: aliceblue;
   background-image: v-bind(cover);
+}
+
+.profile-pic {
+  border-radius: 50%;
+  border: 3px solid orange;
+  transform: translateY(-75px);
 }
 </style>

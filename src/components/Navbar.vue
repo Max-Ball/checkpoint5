@@ -8,17 +8,13 @@
       <span class="navbar-toggler-icon" />
     </button>
     <div class="input-group">
-      <div class="form-outline">
-        <input type="search" id="form1" class="form-control" />
-        <label class="form-label" for="form1">Search</label>
-      </div>
+      <input type="search" id="form1" class="form-control" />
+      <label class="form-label" for="form1"></label>
       <button type="button" class="btn btn-primary">
         <i class="mdi mdi-magnify"></i>
       </button>
     </div>
     <div class="collapse navbar-collapse justify-content-end" id="navbarText">
-      <!-- LOGIN COMPONENT HERE -->
-      <Login />
     </div>
   </nav>
 </template>
