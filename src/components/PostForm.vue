@@ -1,6 +1,6 @@
 <template>
   <div class="col-md-12">
-    <div class="card my-4">
+    <div class="card my-4 elevation-4">
       <div class="card-body d-flex pb-1">
         <div class="pe-3">
           <img class="profile-pic" :src="account.picture" alt="profile image" height="75" width="75">
@@ -11,7 +11,7 @@
           <div class="d-flex justify-content-between align-items-end m">
             <i class="mdi mdi-image-multiple f-20" data-bs-toggle="collapse" data-bs-target="#image-collapse"
               role="button" aria-expanded="false" aria-controls="image-collapse">
-              <span class="fs-6 px-1">Image/Video</span>
+              <span class="fs-6 px-1 text-dark">Add Image/Video</span>
             </i>
             <button class="btn btn-outline btn-border">
               <div class="selectable d-flex align-items-end" type="submit">
@@ -80,5 +80,10 @@ export default {
 
 .btn-border:hover {
   border: none !important;
+}
+
+.profile-pic {
+  border-radius: 50%;
+  border: 2px solid #3a5a40;
 }
 </style>

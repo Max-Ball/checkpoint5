@@ -15,14 +15,10 @@
       </div>
       <div>
         <label for="bio">Bio:</label>
-        <input class="form-control" type="text" name="bio" v-model="editable.bio" required>
+        <textarea class="container-fluid" name="bio" cols="80" rows="4" v-model="editable.bio" required></textarea>
       </div>
       <div>
-        <label for="email">Email:</label>
-        <input class="form-control" type="text" name="email" v-model="editable.email" required>
-      </div>
-      <div>
-        <label for="github">Github Profile:</label>
+        <label for="github">Github profile:</label>
         <input class="form-control" type="text" name="github" v-model="editable.github" required>
       </div>
       <div>
@@ -38,8 +34,8 @@
         <input class="form-control" type="text" name="class" v-model="editable.class" required>
       </div>
       <div>
-        <label for="graduated">Graduated?</label>
-        <input class="form-control" type="text" name="class" v-model="editable.graduated" required>
+        <label for="graduated">Graduated?</label><br>
+        <input type="checkbox" name="class" v-model="editable.graduated">
       </div>
       <div>
         <button type="submit" class="btn btn-primary w-100 my-3">Save Account</button>
@@ -51,8 +47,10 @@
 
 
 <script>
+import { computed } from '@vue/reactivity';
 import { ref, watchEffect } from 'vue';
 import { AppState } from '../AppState';
+import { router } from '../router';
 import { accountService } from '../services/AccountService';
 import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
@@ -68,9 +66,11 @@ export default {
 
     return {
       editable,
+      account: computed(() => AppState.account),
       async handleSubmit() {
         try {
           await accountService.editAccount(editable.value)
+          editable.value = {}
         } catch (error) {
           logger.error('[handling submit]', error)
           Pop.error(error)

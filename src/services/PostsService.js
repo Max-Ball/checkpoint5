@@ -50,6 +50,16 @@ class PostsService {
     AppState.posts.splice(index, 1, new Post(res.data))
   }
 
+  async search(query) {
+    const res = await sandBoxApi.get('/api/posts', {
+      params: {
+        query: query
+      }
+    })
+    AppState.posts = res.data.posts.map(p => new Post(p))
+    console.log(res.data.posts, AppState.posts);
+  }
+
 }
 
 export const postsService = new PostsService()

@@ -1,5 +1,5 @@
 <template>
-  <div class="card text-center text-dark my-4">
+  <div class="card elevation-4 text-center text-dark my-4">
     <div class="card-body p-2">
       <img class="img-fluid" :src="ad.square" alt="">
       <h4>

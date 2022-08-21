@@ -1,10 +1,11 @@
 <template>
-  <div class="card text-dark my-4">
+  <div class="card text-dark elevation-4 my-4">
     <div class="card-body">
-      <Login />
-      <div class="text-center my-5">
-        <img class="profile-pic" :src="account.picture" alt="profile image">
-      </div>
+      <router-link v-if="account.id" :to="{ name: 'Profile', params: { profileId: account.id } }">
+        <div class="text-center my-3">
+          <img class="profile-pic" :src="account.picture" alt="profile image" height="120" width="120">
+        </div>
+      </router-link>
       <div class="border-bottom">
         <h3 class="m-0">
           {{ account.name }}
@@ -32,6 +33,7 @@ import { AppState } from '../AppState';
 import Login from './Login.vue';
 
 export default {
+
   setup() {
     return {
       account: computed(() => AppState.account)
@@ -43,5 +45,13 @@ export default {
 
 
 
-<style>
+<style lang="scss" scoped>
+.profile-pic {
+  border-radius: 50%;
+  border: 2px solid #3a5a40;
+}
+
+.profile-pic:hover {
+  border: 3px solid #3a5a40;
+}
 </style>

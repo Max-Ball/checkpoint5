@@ -2,8 +2,10 @@
   <div class="row justify-content-center">
     <div class="col-md-12">
       <div class="row justify-content-between">
-        <PostForm />
-        <div class="text-end d-flex justify-content-between">
+        <div v-if="account.id">
+          <PostForm />
+        </div>
+        <div class="text-end d-flex justify-content-between mt-4">
           <button :disabled="!nextPage" @click="changePage(nextPage)" class="btn btn-outline w-25 btn-border">
             <i class="mdi mdi-arrow-left-drop-circle"></i> Newer Posts
           </button>
@@ -49,8 +51,10 @@ export default {
 
     return {
       posts: computed(() => AppState.posts),
+      profiles: computed(() => AppState.profiles),
       nextPage: computed(() => AppState.nextPage),
       previousPage: computed(() => AppState.previousPage),
+      account: computed(() => AppState.account),
 
 
       async changePage(url) {

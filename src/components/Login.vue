@@ -1,7 +1,6 @@
 <template>
   <span class="navbar-text">
-    <button class="btn selectable text-success lighten-30 text-uppercase my-2 my-lg-0" @click="login"
-      v-if="!user.isAuthenticated">
+    <button class="btn selectable text-uppercase my-2 my-lg-0" @click="login" v-if="!user.isAuthenticated">
       Login
     </button>
 
@@ -9,7 +8,7 @@
       <h6>Currently logged in as: </h6>
       <div class="dropdown-toggle selectable" data-bs-toggle="dropdown" aria-expanded="false" id="authDropdown">
         <div>
-          <h5 class="mx-3 text-dark">{{ account.name || user.name }}</h5>
+          <h3 class="mx-3">{{ account.name || user.name }}</h3>
         </div>
       </div>
       <div class="dropdown-menu p-0 list-group w-100" aria-labelledby="authDropdown">

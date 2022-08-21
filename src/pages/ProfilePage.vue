@@ -5,9 +5,8 @@
         <div class="cover-img border rounded">
         </div>
         <div class="card-body">
-          <div class="card-title d-flex justify-content-between border-bottom">
+          <div class="card-title">
             <img class="profile-pic" :src="profile.picture" alt="profile-picture" height="150" width="150">
-
             <h2>
               <p class="text-end" v-if="profile.graduated">
                 <i class="mdi mdi-account-school"></i>
@@ -37,12 +36,13 @@
     <div class=container>
       <div class="row justify-content-center">
         <div class="col-10">
-          <div class="row justify-content-between mt-3 px-3">
-            <button v-if="nextPage" @click="changePage(nextPage)" class="btn btn-primary w-25">
-              Newer
+          <div class="text-end d-flex justify-content-between mt-4">
+            <button :disabled="!nextPage" @click="changePage(nextPage)" class="btn btn-outline w-25 btn-border">
+              <i class="mdi mdi-arrow-left-drop-circle"></i> Newer Posts
             </button>
-            <button v-if="previousPage" @click="changePage(previousPage)" class="btn btn-primary w-25">
-              Older
+            <button :disabled="!previousPage" @click="changePage(previousPage)" class="btn btn-outline w-25 btn-border">
+              Older Posts
+              <i class="mdi mdi-arrow-right-drop-circle"></i>
             </button>
           </div>
         </div>
@@ -134,7 +134,7 @@ export default {
 
 .profile-pic {
   border-radius: 50%;
-  border: 3px solid orange;
+  border: 3px solid #3a5a40;
   transform: translateY(-75px);
 }
 </style>

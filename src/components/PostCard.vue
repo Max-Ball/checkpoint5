@@ -1,10 +1,10 @@
 <template>
-  <div class="post-card card my-3 elevation-3">
+  <div class="post-card card my-3 elevation-4">
     <div class="card-body">
       <div class="text-end" v-if="post.creator.id == account.id">
         <div class="dropstart">
           <button class="btn btn-outline btn-border" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="mdi mdi-dots-horizontal"></i>
+            <i class="mdi mdi-dots-horizontal f-20"></i>
           </button>
           <ul class="dropdown-menu">
             <li><i class="mdi mdi-delete fs-5 dropdown-item selectable" @click="deletePost(post.id)"></i>
@@ -13,10 +13,6 @@
           </ul>
         </div>
       </div>
-
-
-
-
       <div class="row">
         <div class="col-md-12 d-flex justify-content-start">
           <router-link :to="{ name: 'Profile', params: { profileId: post.creator.id } }">
@@ -42,15 +38,17 @@
       </div>
       <img class="img-fluid" :src="post.imgUrl" alt="post image">
       <div v-if="post.likes == false" class="text-end p-1">
-        <i class="mdi mdi-heart-outline f-18 selectable" @click="likePost(post.id)"></i>
-        {{ post.likes.length }}
+        <i class="mdi mdi-heart-outline f-18 selectable show-likes" @click="likePost(post.id)"></i>
+        <h5>{{ post.likes.length }}</h5>
       </div>
       <div v-else class="text-end p-1">
         <i class="mdi mdi-heart f-18 selectable" @click="likePost(post.id)"></i>
-        {{ post.likes.length }}
+        <h5>{{ post.likes.length }}</h5>
       </div>
+
     </div>
   </div>
+
 </template>
 
 
@@ -99,9 +97,13 @@ export default {
 
 
 
-<style>
+<style lang="scss" scoped>
 .profile-pic {
   border-radius: 50%;
-  border: 3px solid orange;
+  border: 2px solid #3a5a40;
+}
+
+.profile-pic:hover {
+  border: 3px solid #3a5a40;
 }
 </style>

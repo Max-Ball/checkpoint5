@@ -10,6 +10,15 @@ class ProfilesService {
     logger.log('get profile by id', res.data)
     AppState.activeProfile = new Profile(res.data)
   }
+  async search(query) {
+    const res = await sandBoxApi.get('/api/profiles', {
+      params: {
+        query: query
+      }
+    })
+    AppState.profiles = res.data.map(p => new Profile(p))
+    console.log(res.data, AppState.profiles);
+  }
 }
 
 export const profilesService = new ProfilesService()
