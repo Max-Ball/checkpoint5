@@ -25,7 +25,9 @@
               {{ post.creator.name }}
             </h6>
             <div class="d-flex">
-              {{ new Date(post.createdAt).toLocaleDateString('en-US') }}
+              <p id="time">
+                {{ timeago.format(new Date(post.createdAt)) }}
+              </p>
               <p v-if="post.creator.graduated">
                 <i class="mdi mdi-account-school px-1"></i>
               </p>
@@ -62,6 +64,7 @@ import { Post } from '../models/Post';
 import { postsService } from '../services/PostsService';
 import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
+import * as timeago from 'timeago.js';
 
 export default {
   props: {
@@ -72,6 +75,7 @@ export default {
 
     return {
       account: computed(() => AppState.account),
+      timeago: computed(() => timeago),
 
       async deletePost() {
         try {

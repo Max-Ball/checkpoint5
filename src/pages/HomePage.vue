@@ -37,6 +37,7 @@ export default {
     async function getPosts() {
       try {
         await postsService.getPosts();
+
       }
       catch (error) {
         logger.error("[getting posts]", error);
