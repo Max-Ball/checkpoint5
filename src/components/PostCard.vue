@@ -1,40 +1,52 @@
 <template>
   <div class="post-card card my-3 elevation-3">
     <div class="card-body">
-      <div v-if="post.creator.id == account.id">
-        <i class="mdi mdi-delete selectable px-3" @click="deletePost(post.id)"></i>
+      <div class="text-end" v-if="post.creator.id == account.id">
+        <div class="dropstart">
+          <button class="btn btn-outline btn-border" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="mdi mdi-dots-horizontal"></i>
+          </button>
+          <ul class="dropdown-menu">
+            <li><i class="mdi mdi-delete fs-5 dropdown-item selectable" @click="deletePost(post.id)"></i>
+            </li>
+            <li><i class="mdi mdi-pencil fs-5 dropdown-item selectable"></i></li>
+          </ul>
+        </div>
       </div>
-      <div class="row align-items-end">
-        <div class="col-md-1">
 
+
+
+
+      <div class="row">
+        <div class="col-md-12 d-flex justify-content-start">
           <router-link :to="{ name: 'Profile', params: { profileId: post.creator.id } }">
             <div>
-              <img class="profile-pic" :src="post.creator.picture" alt="profile image" height="50" width="50">
+              <img class="profile-pic" :src="post.creator.picture" alt="profile image" height="60" width="60">
             </div>
           </router-link>
-        </div>
-        <div class="col-md-11 px-4">
-          <h4>
-            {{ post.creator.name }}
-          </h4>
-          <p v-if="post.creator.graduated">
-            <i class="mdi mdi-account-school"></i>
-          </p>
+          <div class="ps-3">
+            <h6 class="m-0">
+              {{ post.creator.name }}
+            </h6>
+            <div class="d-flex">
+              {{ new Date(post.createdAt).toLocaleDateString('en-US') }}
+              <p v-if="post.creator.graduated">
+                <i class="mdi mdi-account-school px-1"></i>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="text-end">
-        {{ new Date(post.createdAt).toLocaleDateString('en-US') }}
-      </div>
-      <div>
+      <div class="my-2">
         {{ post.body }}
       </div>
       <img class="img-fluid" :src="post.imgUrl" alt="post image">
       <div v-if="post.likes == false" class="text-end p-1">
-        <i class="mdi mdi-heart-outline f-50 selectable" @click="likePost(post.id)"></i>
+        <i class="mdi mdi-heart-outline f-18 selectable" @click="likePost(post.id)"></i>
         {{ post.likes.length }}
       </div>
       <div v-else class="text-end p-1">
-        <i class="mdi mdi-heart f-50 selectable" @click="likePost(post.id)"></i>
+        <i class="mdi mdi-heart f-18 selectable" @click="likePost(post.id)"></i>
         {{ post.likes.length }}
       </div>
     </div>

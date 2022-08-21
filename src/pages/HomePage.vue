@@ -1,28 +1,21 @@
 <template>
-  <div class="row">
-    <div class="col-md-3 profile-bar bg-dark sticky">
-      profile bar
-    </div>
-    <div class="col-md-7">
-      <div class="row">
-        <div class="col-md-10">
-          <PostForm />
-        </div>
-
-        <div class="col-10">
-          <div class="row justify-content-between mt-3 px-3">
-            <button v-if="nextPage" @click="changePage(nextPage)" class="btn btn-primary w-25">
-              Newer
-            </button>
-            <button v-if="previousPage" @click="changePage(previousPage)" class="btn btn-primary w-25">
-              Older
-            </button>
-          </div>
-        </div>
-        <div class="col-md-10" v-for="p in posts" :key="p.id">
-          <PostCard :post="p" />
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+      <div class="row justify-content-between">
+        <PostForm />
+        <div class="text-end d-flex justify-content-between">
+          <button :disabled="!nextPage" @click="changePage(nextPage)" class="btn btn-outline w-25 btn-border">
+            <i class="mdi mdi-arrow-left-drop-circle"></i> Newer Posts
+          </button>
+          <button :disabled="!previousPage" @click="changePage(previousPage)" class="btn btn-outline w-25 btn-border">
+            Older Posts
+            <i class="mdi mdi-arrow-right-drop-circle"></i>
+          </button>
         </div>
       </div>
+    </div>
+    <div class="col-md-12" v-for="p in posts" :key="p.id">
+      <PostCard :post="p" />
     </div>
   </div>
 </template>
@@ -82,5 +75,9 @@ export default {
 <style scoped lang="scss">
 .profile-bar {
   height: 100vh;
+}
+
+.btn-border:hover {
+  border: none !important;
 }
 </style>
