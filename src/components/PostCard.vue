@@ -9,7 +9,7 @@
           <ul class="dropdown-menu">
             <li><i class="mdi mdi-delete fs-5 dropdown-item selectable" @click="deletePost(post.id)"></i>
             </li>
-            <li><i class="mdi mdi-pencil fs-5 dropdown-item selectable"></i></li>
+            <li><i class="mdi mdi-pencil fs-5 dropdown-item selectable" @click="adjustPost(post)"></i></li>
           </ul>
         </div>
       </div>
@@ -95,6 +95,10 @@ export default {
           logger.error('[liking post]', error)
           Pop.error(error)
         }
+      },
+
+      adjustPost(post) {
+        postsService.setActivePost(post)
       }
     };
   },

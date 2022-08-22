@@ -60,6 +60,15 @@ class PostsService {
     console.log(res.data.posts, AppState.posts);
   }
 
+  setActivePost(post) {
+    AppState.activePost = post
+  }
+
+  async editPost(postData) {
+    const res = await sandBoxApi.put(`api/posts/${postData.id}`, postData)
+    AppState.activePost = res.data
+  }
+
 }
 
 export const postsService = new PostsService()

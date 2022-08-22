@@ -16,13 +16,13 @@
           </div>
           <p>{{ profile.bio }}</p>
           <div class="fs-5 d-flex justify-content-evenly">
-            <a class="text-dark" :href="profile.github" title="github">
+            <a v-if="profile.github" class="text-dark" :href="profile.github" title="github">
               <i class="mdi mdi-github f-28"></i>
             </a>
-            <a class="text-dark" :href="profile.linkedin" title="linkedin">
+            <a v-if="profile.linkedin" class="text-dark" :href="profile.linkedin" title="linkedin">
               <i class="mdi mdi-linkedin f-28"></i>
             </a>
-            <a class="text-dark" :href="profile.resume" title="resume">
+            <a v-if="profile.resume" class="text-dark" :href="profile.resume" title="resume">
               <i class="mdi mdi-newspaper-variant-outline f-28"></i>
             </a>
             <a class="text-dark" href="https://www.gmail.com" title="email">
